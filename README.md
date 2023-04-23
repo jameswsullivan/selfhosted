@@ -5,10 +5,12 @@
 <br>
 #### Nextcloud
 <br>
-**Build image**
+** Build image **
 <br>
+
 ```
-# Linux build:
+Linux build:
+
 docker image build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress plain --no-cache . | tee nextcloud_build.log
 
 docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . | tee mysql_build.log
@@ -17,8 +19,8 @@ docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no
 docker image build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress plain --no-cahce . 2>&1 | Tee-Object nextcloud_build.log
 
 docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . 2>&1 | Tee-Object mysql_build.log
-
 ```
+
 <br>
 <br>
 **Start the containers**
