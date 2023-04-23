@@ -1,16 +1,10 @@
-#### ABOUT
-
-**TAKE YOUR PRIVACY BACK** with Self-Hosted applications.
+### Take Your Privacy Back with Self-Hosted applications
 <br>
 <br>
 
-#### Nextcloud
+#### Nextcloud:
 
-<br>
-
-**Build image**
-
-<br>
+**BUILD IMAGE**
 
 ```
 # Linux build:
@@ -28,9 +22,7 @@ docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no
 <br>
 <br>
 
-**Start the containers**
-
-<br>
+**START CONTAINER**
 
 ```
 # Nextcloud
