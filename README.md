@@ -1,8 +1,7 @@
 ### Take Your Privacy Back with Self-Hosted applications
 <br>
-<br>
 
-#### Nextcloud:
+### Nextcloud:
 
 **BUILD IMAGE**
 
@@ -33,4 +32,8 @@ docker run -dit --name MY_NEXTCLOUD_CONTAINER --ip IP_ADDRESS --network DOCKER_N
 # Persistent data mount: /mnt/nextcloud_db
 docker run -dit --name MY_NEXTCLOUD_DB_CONTAINER --ip IP_ADDRESS --network DOCKER_NETWORK --hostname=MY_NEXTCLOUD_DB_CONTAINER_HOSTNAME --restart=unless-stopped -v /mnt/nextcloud_db:/var/lib/mysql mysql:1.0
 ```
+
+<br>
+
+### BookStack
 
