@@ -83,9 +83,7 @@ docker run -dit \
 **DEFAULT CONFIG**
 
 [Official Installation Guide](https://www.bookstackapp.com/docs/admin/installation/#manual)
-
 <br>
-
 Default login email: admin@admin.com
 <br>
 Default login password: password
