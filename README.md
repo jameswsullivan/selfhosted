@@ -26,11 +26,23 @@ docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no
 ```
 # Nextcloud
 # Persistent data mount: /mnt/nextcloud_data
-docker run -dit --name MY_NEXTCLOUD_CONTAINER --ip IP_ADDRESS --network DOCKER_NETWORK --restart=unless-stopped --hostname=MY_NEXTCLOUD_CONTAINER_HOSTNAME -v /mnt/nextcloud_data:/var/www/html nextcloud:1.0
+docker run -dit \
+    --name MY_NEXTCLOUD_CONTAINER \
+    --ip IP_ADDRESS --network DOCKER_NETWORK \
+    --restart=unless-stopped \
+    --hostname=MY_NEXTCLOUD_CONTAINER_HOSTNAME \
+    -v /mnt/nextcloud_data:/var/www/html \
+    nextcloud:1.0
 
 # MySQL
 # Persistent data mount: /mnt/nextcloud_db
-docker run -dit --name MY_NEXTCLOUD_DB_CONTAINER --ip IP_ADDRESS --network DOCKER_NETWORK --hostname=MY_NEXTCLOUD_DB_CONTAINER_HOSTNAME --restart=unless-stopped -v /mnt/nextcloud_db:/var/lib/mysql mysql:1.0
+docker run -dit \
+    --name MY_NEXTCLOUD_DB_CONTAINER \
+    --ip IP_ADDRESS --network DOCKER_NETWORK \
+    --hostname=MY_NEXTCLOUD_DB_CONTAINER_HOSTNAME \
+    --restart=unless-stopped \
+    -v /mnt/nextcloud_db:/var/lib/mysql \
+    mysql:1.0
 ```
 
 <br>
@@ -75,13 +87,43 @@ docker run -dit \
 <br>
 
 Default login email: admin@admin.com
-
 <br>
-
 Default login password: password
-
 <br>
-
 Customize .env and bookstack.conf to fit your config.
 
 <br>
+
+### Simple Machine Forum
+
+**BUILD IMAGE**
+
+```
+# Linux build:
+docker image build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | tee smf_build.log
+
+# Windows build using PowerShell
+docker image build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | Tee-Object smf_build.log
+```
+
+<br>
+<br>
+
+**START CONTAINER**
+
+```
+docker run -dit \
+    --name MY_SMF_CONTAINER_NAME \
+    --ip IP_ADDRESS --network DOCKER_NETWORK \
+    --hostname=MY_HOSTNAME \
+    --restart=unless-stopped \
+    -v SOURCE_DIRECTORY:/var/www/smf \
+    smf:1.0
+```
+
+<br>
+<br>
+
+**DEFAULT CONFIG**
+
+Change ServerName to your server name in smf.conf.
