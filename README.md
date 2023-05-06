@@ -125,3 +125,41 @@ docker run -dit \
 **DEFAULT CONFIG**
 
 Change ServerName to your server name in smf.conf.
+
+<br>
+
+### Grafana
+
+**BUILD IMAGE**
+
+```
+# Linux build:
+docker image build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | tee grafana_build.log
+
+# Windows build using PowerShell
+docker image build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | Tee-Object grafana_build.log
+```
+
+<br>
+<br>
+
+**START CONTAINER**
+
+```
+docker run -dit \
+    --name MY_SMF_CONTAINER_NAME \
+    --ip IP_ADDRESS --network DOCKER_NETWORK \
+    --hostname=MY_HOSTNAME \
+    --restart=unless-stopped \
+    -v SOURCE_DIRECTORY:/var/lib/grafana \
+    grafana:1.0
+```
+
+<br>
+<br>
+
+**DEFAULT CONFIG and INFO**
+
+- Modified default port from 3000 to 80.
+- Default username/password: admin/admin.
+- Default locale is set to UTF-8 and time zone set to US Central.
