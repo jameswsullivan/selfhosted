@@ -2,8 +2,8 @@ FROM ubuntu
 
 ARG APACHE_DIR=/var/www
 ARG BOOKSTACK_DIR=/var/www/bookstack
-ARG DEBIAN_FRONTEND=noninteractive
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 

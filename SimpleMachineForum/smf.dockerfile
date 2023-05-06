@@ -3,8 +3,8 @@ FROM ubuntu
 ARG APACHE_WWW=/var/www
 ARG WEB_ROOT_DIR=/var/www/smf
 ARG APACHE_CONFG_DIR=/etc/apache2/sites-available
-ARG DEBIAN_FRONTEND=noninteractive
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
