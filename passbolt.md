@@ -75,3 +75,7 @@ service nginx restart
 **Conclusion**
 
 After the above steps, Passbolt should be working on Windows and Android. Chrome's cache & cookies might need to be cleared before the new cert takes effect.
+
+**Note:** When generating the self-signed certificate, the ***subjectAltName*** must be specified, otherwise you'll likely encounter the following error when scanning the QR code. [See this post.](https://community.passbolt.com/t/error-setting-up-mobile-app/5875)
+
+***There was an error during transfer update(Something went wrong!)***
