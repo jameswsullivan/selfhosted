@@ -10,7 +10,7 @@ pull passbolt/passbolt
 
 <br>
 
-**START CONTAINER**
+**Start Container**
 
 ```
 docker run -dit \
