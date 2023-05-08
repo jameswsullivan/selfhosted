@@ -1,6 +1,8 @@
 ### Take Your Privacy Back with Self-Hosted Applications
 <br>
 
+---
+
 ### Nextcloud:
 
 **BUILD IMAGE**
@@ -47,6 +49,8 @@ docker run -dit \
 
 <br>
 
+---
+
 ### BookStack
 
 **BUILD IMAGE**
@@ -92,6 +96,8 @@ Customize .env and bookstack.conf to fit your config.
 
 <br>
 
+---
+
 ### Simple Machine Forum
 
 **BUILD IMAGE**
@@ -127,6 +133,8 @@ docker run -dit \
 Change ServerName to your server name in smf.conf.
 
 <br>
+
+---
 
 ### Grafana
 
