@@ -58,6 +58,8 @@ SELECT Name, Email, EmailVerified FROM [User]
 GO
 
 
+# Change "admin" to the user that you need to modify.
+
 UPDATE [User] SET EmailVerified = 1 WHERE [User].Name="admin";
 GO
 
@@ -70,4 +72,4 @@ GO
 
 I chose bitwarden over Passbolt because bitwarden stores a cached copy of your vault and allows offline use (read-only) while I'm away from my home lab or don't have internet connection. This is sufficient for me.
 
-Of course, if you're using a self-signed certificate, you will have to manually install the cert. See the *Install the certificates:* section [in this article](https://jameswsullivan.github.io/self-host-passbolt/).
+Of course, if you're using a self-signed certificate, you will have to manually install the cert. See the *Install the certificates:* section [in this article](https://jameswsullivan.github.io/self-host-passbolt/). Fun fact: Bitwarden's self-signed certificate is valid for 100 years.
