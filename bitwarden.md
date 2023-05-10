@@ -69,3 +69,5 @@ GO
 **Conclusion**
 
 I chose bitwarden over Passbolt because bitwarden stores a cached copy of your vault and allows offline use (read-only) while I'm away from my home lab or don't have internet connection. This is sufficient for me.
+
+Of course, if you're using a self-signed certificate, you will have to manually install the cert. See the *Install the certificates:* section [in this article](https://jameswsullivan.github.io/self-host-passbolt/).
