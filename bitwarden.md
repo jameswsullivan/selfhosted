@@ -9,7 +9,7 @@
 **Installation**
 
 - [bitwarden official installation guide](https://bitwarden.com/help/install-on-premise-linux/)
-- See bitwarden.sh for my installation script.
+- See [bitwarden.sh](https://github.com/jameswsullivan/selfhosted/blob/main/bitwarden.sh) for my installation script.
 
 <br>
 
@@ -25,24 +25,30 @@ I am running bitwarden in my isolated home lab environment without an SMTP serve
 
 cat bwdata/env/mssql.override.env
 
+
 # You'll get:
 
 SA_PASSWORD=YOUR_DB_PASS
+
 
 # Connect to the bitwarden-mssql container:
 
 docker exec -it bitwarden-mssql bash
 
+
 # While in the bitwarden-mssql container, do the following:
+
 
 # Connect to the DB instance:
 cd /opt/mssql-tools/bin
 ./sqlcmd -S 127.0.0.1 -U sa -P YOUR_DB_PASS
 
+
 # List all databases:
 SELECT name, database_id, create_date  
 FROM sys.databases;  
 GO 
+
 
 # Find the database name (your database name was specified during this installation step: Enter the database name for your Bitwarden instance (ex. vault): YOUR_DB_NAME):
 

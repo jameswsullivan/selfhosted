@@ -1,4 +1,5 @@
 # bitwarden Installation Script
+YOUR_BITWARDEN_USER_PASSWORD=$(ADD_YOUR_BITWARDEN_USER_PASSWORD)
 
 # Installing Docker.
 echo "Installing Docker ..."
@@ -23,7 +24,7 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 # Create bitwarden local user & directory
 echo "Setting up bitwarden user and directory ..."
 useradd -m -s /bin/bash bitwarden
-echo "bitwarden:YOUR_BITWARDEN_USER_PASSWORD" | chpasswd
+echo "bitwarden:$YOUR_BITWARDEN_USER_PASSWORD" | chpasswd
 
 groupadd docker
 usermod -aG docker bitwarden
