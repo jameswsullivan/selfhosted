@@ -171,3 +171,51 @@ docker run -dit \
 - Modified default port from 3000 to 80.
 - Default username/password: admin/admin.
 - Default locale is set to UTF-8 and time zone set to US Central.
+
+<br>
+
+---
+
+### Ubuntu based LAMP-stack Web Server
+
+**BUILD IMAGE**
+
+```
+# Linux build:
+docker image build --file ubuntu_lamp_webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | tee ubuntu-lamp_build.log
+
+# Windows build using PowerShell
+docker image build --file ubuntu_lamp_webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | Tee-Object ubuntu-lamp_build.log
+```
+
+<br>
+<br>
+
+**START CONTAINER**
+
+```
+docker run -dit \
+    --name YOUR_CONTAINER_NAME \
+    --network YOUR_DOCKER_NETWORK --ip IP_ADDRESS \
+    --restart=unless-stopped \
+    --hostname=YOUR_HOSTNAME \
+    -v YOUR_WEB_ROOT_DIRECTORY:/var/www/html \
+    -v YOUR_SITE_CONFIGS_DIRECTORY:/etc/apache2/sites-available \
+    ubuntu-lamp:1.0
+```
+
+<br>
+<br>
+
+**CONFIGURATIONS**
+
+The following Environment Variables are defined:
+- PHP_MEMORY_LIMIT 4096M
+- PHP_POST_MAX_SIZE 4096M
+- PHP_UPLOAD_MAX_FILESIZE 4096M
+- PHP_INI=/etc/php/8.1/apache2/php.ini
+
+
+Persistent files:
+- YOUR_WEB_ROOT_DIRECTORY: place your website installation files in this directory (such as WordPress).
+- YOUR_SITE_CONFIGS_DIRECTORY: place your site config files (*.conf files) in this directory.
