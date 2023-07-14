@@ -1,7 +1,5 @@
 ## Take Your Privacy Back with Self-Hosted Applications
 
-
-
 ## Nextcloud:
 
 #### BUILD IMAGE
@@ -42,8 +40,6 @@ docker run -dit \
     -v /mnt/nextcloud_db:/var/lib/mysql \
     mysql:1.0
 ```
-
-
 
 ## BookStack
 
