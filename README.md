@@ -1,11 +1,8 @@
-### Take Your Privacy Back with Self-Hosted Applications
-<br>
+## Take Your Privacy Back with Self-Hosted Applications
 
----
+## Nextcloud:
 
-### Nextcloud:
-
-**BUILD IMAGE**
+#### BUILD IMAGE
 
 ```
 # Linux build:
@@ -20,10 +17,7 @@ docker image build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress pl
 docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . 2>&1 | Tee-Object mysql_build.log
 ```
 
-<br>
-<br>
-
-**START CONTAINER**
+#### START CONTAINER
 
 ```
 # Nextcloud
@@ -47,13 +41,9 @@ docker run -dit \
     mysql:1.0
 ```
 
-<br>
+## BookStack
 
----
-
-### BookStack
-
-**BUILD IMAGE**
+#### BUILD IMAGE
 
 ```
 # Linux build:
@@ -63,10 +53,7 @@ docker image build --file bookstack.dockerfile --tag bookstack:1.0 --progress pl
 docker image build --file bookstack.dockerfile --tag bookstack:1.0 --progress plain --no-cache . 2>&1 | Tee-Object bookstack_build.log
 ```
 
-<br>
-<br>
-
-**START CONTAINER**
+#### START CONTAINER
 
 ```
 docker run -dit \
@@ -81,26 +68,16 @@ docker run -dit \
     bookstack:1.0
 ```
 
-<br>
-<br>
+#### DEFAULT CONFIG
 
-**DEFAULT CONFIG**
+- [Official Installation Guide](https://www.bookstackapp.com/docs/admin/installation/#manual)
+- Default login email: admin@admin.com
+- Default login password: password
+- Customize .env and bookstack.conf to fit your config.
 
-[Official Installation Guide](https://www.bookstackapp.com/docs/admin/installation/#manual)
-<br>
-Default login email: admin@admin.com
-<br>
-Default login password: password
-<br>
-Customize .env and bookstack.conf to fit your config.
+## Simple Machine Forum
 
-<br>
-
----
-
-### Simple Machine Forum
-
-**BUILD IMAGE**
+#### BUILD IMAGE
 
 ```
 # Linux build:
@@ -110,10 +87,7 @@ docker image build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cac
 docker image build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | Tee-Object smf_build.log
 ```
 
-<br>
-<br>
-
-**START CONTAINER**
+#### START CONTAINER
 
 ```
 docker run -dit \
@@ -125,20 +99,13 @@ docker run -dit \
     smf:1.0
 ```
 
-<br>
-<br>
+#### DEFAULT CONFIG
 
-**DEFAULT CONFIG**
+- Change ServerName to your server name in smf.conf.
 
-Change ServerName to your server name in smf.conf.
+## Grafana
 
-<br>
-
----
-
-### Grafana
-
-**BUILD IMAGE**
+#### BUILD IMAGE
 
 ```
 # Linux build:
@@ -148,10 +115,7 @@ docker image build --file grafana.dockerfile --tag grafana:1.0 --progress plain 
 docker image build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | Tee-Object grafana_build.log
 ```
 
-<br>
-<br>
-
-**START CONTAINER**
+#### START CONTAINER
 
 ```
 docker run -dit \
@@ -163,22 +127,16 @@ docker run -dit \
     grafana:1.0
 ```
 
-<br>
-<br>
-
-**DEFAULT CONFIG and INFO**
+#### DEFAULT CONFIG and INFO
 
 - Modified default port from 3000 to 80.
 - Default username/password: admin/admin.
 - Default locale is set to UTF-8 and time zone set to US Central.
 
-<br>
 
----
+## Ubuntu based LAMP-stack Web Server (with FTP)
 
-### Ubuntu based LAMP-stack Web Server
-
-**BUILD IMAGE**
+#### BUILD IMAGE
 
 ```
 # Linux build:
@@ -188,10 +146,7 @@ docker image build --file ubuntu_lamp_webserver.dockerfile --tag ubuntu-lamp:1.0
 docker image build --file ubuntu_lamp_webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | Tee-Object ubuntu-lamp_build.log
 ```
 
-<br>
-<br>
-
-**START CONTAINER**
+#### START CONTAINER
 
 ```
 docker run -dit \
@@ -204,17 +159,13 @@ docker run -dit \
     ubuntu-lamp:1.0
 ```
 
-<br>
-<br>
-
-**CONFIGURATIONS**
+#### CONFIGURATIONS
 
 The following Environment Variables are defined:
 - PHP_MEMORY_LIMIT 4096M
 - PHP_POST_MAX_SIZE 4096M
 - PHP_UPLOAD_MAX_FILESIZE 4096M
 - PHP_INI=/etc/php/8.1/apache2/php.ini
-
 
 Persistent files:
 - YOUR_WEB_ROOT_DIRECTORY: place your website installation files in this directory (such as WordPress).
