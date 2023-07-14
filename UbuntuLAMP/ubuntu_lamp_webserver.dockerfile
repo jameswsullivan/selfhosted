@@ -1,6 +1,6 @@
 FROM ubuntu
 
-ARG APACHE_WWW=/var/www
+ARG APACHE_DIR=/var/www/html
 ARG APACHE_CONFG_DIR=/etc/apache2/sites-available
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -21,18 +21,23 @@ RUN apt-get update -y && \
     update-locale LANG=en_US.UTF-8 && \
     apt-get install -y apache2 apache2-utils && \
     apt-get install -y php8.1 php8.1-curl php8.1-mbstring php8.1-xml php8.1-gd && \
-    apt-get install -y php8.1-imagick php8.1-dom php8.1-intl php8.1-zip php8.1-mysql libapache2-mod-php
+    apt-get install -y php8.1-imagick php8.1-dom php8.1-intl php8.1-zip php8.1-mysql libapache2-mod-php && \
+    apt-get install -y vsftpd acl
 
 RUN rm -rf $APACHE_CONFG_DIR/* && \
-    chown -R www-data:www-data $APACHE_WWW && \
     sed -i "s/^\(memory_limit =\).*/\1 ${PHP_MEMORY_LIMIT}/" $PHP_INI && \
     sed -i "s/^\(post_max_size =\).*/\1 ${PHP_POST_MAX_SIZE}/" $PHP_INI && \
     sed -i "s/^\(upload_max_filesize =\).*/\1 ${PHP_UPLOAD_MAX_FILESIZE}/" $PHP_INI && \
+    # configure FTP user and permissions.
+    useradd -m ftpuser && echo "ftpuser:1234" | chpasswd && \
+    setfacl -Rm u:ftpuser:rwx $APACHE_DIR && \
+    chown -R ftpuser:www-data $APACHE_DIR && \
+    chmod -R 775 $APACHE_DIR && \
+    sed -i 's:/home/ftpuser:/var/www/html:g' /etc/passwd && \
     cd /
 
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod ugo+rx /usr/local/bin/docker-entrypoint.sh
 
-EXPOSE 80 443 3306
-
+EXPOSE 80 443 3306 21 30000
 ENTRYPOINT ["docker-entrypoint.sh"]
