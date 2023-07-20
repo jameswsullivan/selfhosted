@@ -14,7 +14,8 @@ ENV PHP_INI=/etc/php/8.1/apache2/php.ini
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y wget nano curl unzip tzdata locales mysql-client && \
+    apt-get install -y wget nano curl unzip tzdata locales mysql-client ca-certificates && \
+    apt-get upgrade ca-certificates -y && \
     apt-get install -y iputils-ping iproute2 openssh-server && \
     ln -fs /usr/share/zoneinfo/US/Central /etc/localtime && \
     locale-gen en_US.UTF-8 && \
