@@ -15,7 +15,7 @@ echo -e ${vsftpdSettings} >> /etc/vsftpd.conf
 
 service vsftpd start
 
-cd /
+cd /var/www/html
 
 exec "$@"
 tail -f /dev/null
