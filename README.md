@@ -7,37 +7,37 @@
 ```
 # Linux build:
 
-docker image build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress plain --no-cache . 2>&1 | tee nextcloud_build.log
+docker build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress plain --no-cache . 2>&1 | tee nextcloud-build.log
 
-docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . 2>&1 | tee mysql_build.log
+docker build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . 2>&1 | tee mysql-build.log
 
 # Windows build using PowerShell
-docker image build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress plain --no-cahce . 2>&1 | Tee-Object nextcloud_build.log
+docker build --file nextcloud.dockerfile --tag nextcloud:1.0 --progress plain --no-cahce . 2>&1 | Tee-Object nextcloud-build.log
 
-docker image build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . 2>&1 | Tee-Object mysql_build.log
+docker build --file mysql.dockerfile --tag mysql:1.0 --progress plain --no-cache . 2>&1 | Tee-Object mysql-build.log
 ```
 
 #### START CONTAINER
 
 ```
 # Nextcloud
-# Persistent data mount: /mnt/nextcloud_data
+# Persistent data mount: /mnt/nextcloud-data
 docker run -dit \
-    --name MY_NEXTCLOUD_CONTAINER \
-    --ip IP_ADDRESS --network DOCKER_NETWORK \
+    --name MY-NEXTCLOUD-CONTAINER \
+    --ip IP-ADDRESS --network DOCKER-NETWORK \
     --restart=unless-stopped \
-    --hostname=MY_NEXTCLOUD_CONTAINER_HOSTNAME \
-    -v /mnt/nextcloud_data:/var/www/html \
+    --hostname=MY-NEXTCLOUD-CONTAINER-HOSTNAME \
+    -v /mnt/nextcloud-data:/var/www/html \
     nextcloud:1.0
 
 # MySQL
-# Persistent data mount: /mnt/nextcloud_db
+# Persistent data mount: /mnt/nextcloud-db
 docker run -dit \
-    --name MY_NEXTCLOUD_DB_CONTAINER \
-    --ip IP_ADDRESS --network DOCKER_NETWORK \
-    --hostname=MY_NEXTCLOUD_DB_CONTAINER_HOSTNAME \
+    --name MY-NEXTCLOUD-DB-CONTAINER \
+    --ip IP-ADDRESS --network DOCKER-NETWORK \
+    --hostname=MY-NEXTCLOUD-DB-CONTAINER-HOSTNAME \
     --restart=unless-stopped \
-    -v /mnt/nextcloud_db:/var/lib/mysql \
+    -v /mnt/nextcloud-db:/var/lib/mysql \
     mysql:1.0
 ```
 
@@ -47,24 +47,24 @@ docker run -dit \
 
 ```
 # Linux build:
-docker image build --file bookstack.dockerfile --tag bookstack:1.0 --progress plain --no-cache . 2>&1 | tee bookstack_build.log
+docker build --file bookstack.dockerfile --tag bookstack:1.0 --progress plain --no-cache . 2>&1 | tee bookstack-build.log
 
 # Windows build using PowerShell
-docker image build --file bookstack.dockerfile --tag bookstack:1.0 --progress plain --no-cache . 2>&1 | Tee-Object bookstack_build.log
+docker build --file bookstack.dockerfile --tag bookstack:1.0 --progress plain --no-cache . 2>&1 | Tee-Object bookstack-build.log
 ```
 
 #### START CONTAINER
 
 ```
 docker run -dit \
-    --name MY_BOOKSTACK_CONTAINER_NAME \
-    --ip IP_ADDRESS --network DOCKER_NETWORK \
-    --hostname=MY_HOSTNAME \
+    --name MY-BOOKSTACK-CONTAINER-NAME \
+    --ip IP-ADDRESS --network DOCKER-NETWORK \
+    --hostname=MY-HOSTNAME \
     --restart=unless-stopped \
-    --mount type=bind,source=SOURCE_DIRECTORY/.env,target=/var/www/bookstack/.env \
-    --mount type=bind,source=SOURCE_DIRECTORY/bookstack.conf,target=/etc/apache2/sites-available/bookstack.conf \
-    -v SOURCE_DIRECTORY:/var/www/bookstack/public/uploads \
-    -v SOURCE_DIRECTORY:/var/www/bookstack/storage/uploads \
+    --mount type=bind,source=SOURCE-DIRECTORY/.env,target=/var/www/bookstack/.env \
+    --mount type=bind,source=SOURCE-DIRECTORY/bookstack.conf,target=/etc/apache2/sites-available/bookstack.conf \
+    -v SOURCE-DIRECTORY:/var/www/bookstack/public/uploads \
+    -v SOURCE-DIRECTORY:/var/www/bookstack/storage/uploads \
     bookstack:1.0
 ```
 
@@ -81,21 +81,21 @@ docker run -dit \
 
 ```
 # Linux build:
-docker image build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | tee smf_build.log
+docker build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | tee smf-build.log
 
 # Windows build using PowerShell
-docker image build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | Tee-Object smf_build.log
+docker build --file smf.dockerfile --tag smf:1.0 --progress plain --no-cache . 2>&1 | Tee-Object smf-build.log
 ```
 
 #### START CONTAINER
 
 ```
 docker run -dit \
-    --name MY_SMF_CONTAINER_NAME \
-    --ip IP_ADDRESS --network DOCKER_NETWORK \
-    --hostname=MY_HOSTNAME \
+    --name MY-SMF-CONTAINER-NAME \
+    --ip IP-ADDRESS --network DOCKER-NETWORK \
+    --hostname=MY-HOSTNAME \
     --restart=unless-stopped \
-    -v SOURCE_DIRECTORY:/var/www/smf \
+    -v SOURCE-DIRECTORY:/var/www/smf \
     smf:1.0
 ```
 
@@ -109,21 +109,21 @@ docker run -dit \
 
 ```
 # Linux build:
-docker image build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | tee grafana_build.log
+docker build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | tee grafana-build.log
 
 # Windows build using PowerShell
-docker image build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | Tee-Object grafana_build.log
+docker build --file grafana.dockerfile --tag grafana:1.0 --progress plain --no-cache . 2>&1 | Tee-Object grafana-build.log
 ```
 
 #### START CONTAINER
 
 ```
 docker run -dit \
-    --name MY_SMF_CONTAINER_NAME \
-    --ip IP_ADDRESS --network DOCKER_NETWORK \
-    --hostname=MY_HOSTNAME \
+    --name MY-SMF-CONTAINER-NAME \
+    --ip IP-ADDRESS --network DOCKER-NETWORK \
+    --hostname=MY-HOSTNAME \
     --restart=unless-stopped \
-    -v SOURCE_DIRECTORY:/var/lib/grafana \
+    -v SOURCE-DIRECTORY:/var/lib/grafana \
     grafana:1.0
 ```
 
@@ -140,22 +140,22 @@ docker run -dit \
 
 ```
 # Linux build:
-docker image build --file ubuntu_lamp_webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | tee ubuntu-lamp_build.log
+docker build --file ubuntu-lamp-webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | tee ubuntu-lamp-build.log
 
 # Windows build using PowerShell
-docker image build --file ubuntu_lamp_webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | Tee-Object ubuntu-lamp_build.log
+docker build --file ubuntu-lamp-webserver.dockerfile --tag ubuntu-lamp:1.0 --progress plain --no-cache . 2>&1 | Tee-Object ubuntu-lamp-build.log
 ```
 
 #### START CONTAINER
 
 ```
 docker run -dit \
-    --name YOUR_CONTAINER_NAME \
-    --network YOUR_DOCKER_NETWORK --ip IP_ADDRESS \
+    --name YOUR-CONTAINER-NAME \
+    --network YOUR-DOCKER-NETWORK --ip IP-ADDRESS \
     --restart=unless-stopped \
-    --hostname=YOUR_HOSTNAME \
-    -v YOUR_WEB_ROOT_DIRECTORY:/var/www/html \
-    -v YOUR_SITE_CONFIGS_DIRECTORY:/etc/apache2/sites-available \
+    --hostname=YOUR-HOSTNAME \
+    -v YOUR-WEB-ROOT-DIRECTORY:/var/www/html \
+    -v YOUR-SITE-CONFIGS-DIRECTORY:/etc/apache2/sites-available \
     ubuntu-lamp:1.0
 ```
 
@@ -168,5 +168,5 @@ The following Environment Variables are defined:
 - PHP_INI=/etc/php/8.1/apache2/php.ini
 
 Persistent files:
-- YOUR_WEB_ROOT_DIRECTORY: place your website installation files in this directory (such as WordPress).
-- YOUR_SITE_CONFIGS_DIRECTORY: place your site config files (*.conf files) in this directory.
+- YOUR-WEB-ROOT-DIRECTORY: place your website installation files in this directory (such as WordPress).
+- YOUR-SITE-CONFIGS-DIRECTORY: place your site config files (*.conf files) in this directory.
