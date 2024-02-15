@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS testdb;
+
+USE testdb;
+
+CREATE TABLE IF NOT EXISTS testdata (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    timestamp DATETIME,
+    message TEXT
+);
