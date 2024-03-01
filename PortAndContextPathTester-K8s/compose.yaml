@@ -1,0 +1,9 @@
+services:
+  port-context-path-tester:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: port-context-path-tester:1.0.0
+    container_name: port-context-path-tester
+    environment:
+      PATH_TO_TEST: 
