@@ -1,20 +1,18 @@
 FROM ubuntu
 
-ENV WEB_ROOT=/var/www/html
-ENV SITE_CONFIG_DIR=/etc/apache2/sites-available
-
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
-
-ENV PHP_MEMORY_LIMIT=4096M
-ENV PHP_POST_MAX_SIZE=4096M
-ENV PHP_UPLOAD_MAX_FILESIZE=4096M
-ENV LOG_PHP_ERROR="log_errors = On"
-ENV PHP_LOG_FILE="error_log = php_errors.log"
-ENV PHP_INI=/etc/php/8.1/apache2/php.ini
-
 ENV FTP_USER_PASS=1234
+
+ARG WEB_ROOT=/var/www/html
+ARG SITE_CONFIG_DIR=/etc/apache2/sites-available
+ARG PHP_MEMORY_LIMIT=4096M
+ARG PHP_POST_MAX_SIZE=4096M
+ARG PHP_UPLOAD_MAX_FILESIZE=4096M
+ARG LOG_PHP_ERROR="log_errors = On"
+ARG PHP_LOG_FILE="error_log = php_errors.log"
+ARG PHP_INI=/etc/php/8.1/apache2/php.ini
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \

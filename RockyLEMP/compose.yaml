@@ -1,4 +1,3 @@
-version: '3.8'
 name: rockylinux-lemp
 
 services:
@@ -13,6 +12,9 @@ services:
       - lemp
     volumes:
       - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD: 1234
+      - TZ: "America/Chicago"
   web:
     build:
       context: .

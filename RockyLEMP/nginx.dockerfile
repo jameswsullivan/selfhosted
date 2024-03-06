@@ -1,12 +1,12 @@
 FROM rockylinux:9.2
 
-ENV WEB_ROOT="/usr/share/nginx/html"
-ENV PHP_INI="/etc/php.ini"
-ENV PHP_MEMORY_LIMIT="4096M"
-ENV PHP_POST_MAX_SIZE="4096M"
-ENV PHP_UPLOAD_MAX_FILESIZE="4096M"
-ENV LOG_PHP_ERROR="log_errors = On"
-ENV PHP_LOG_FILE="error_log = php_errors.log"
+ARG WEB_ROOT="/usr/share/nginx/html"
+ARG PHP_INI="/etc/php.ini"
+ARG PHP_MEMORY_LIMIT="4096M"
+ARG PHP_POST_MAX_SIZE="4096M"
+ARG PHP_UPLOAD_MAX_FILESIZE="4096M"
+ARG LOG_PHP_ERROR="log_errors = On"
+ARG PHP_LOG_FILE="error_log = php_errors.log"
 
 RUN dnf -y update && \
     dnf -y install nginx nano procps mysql && \
