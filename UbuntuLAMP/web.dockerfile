@@ -1,7 +1,7 @@
 FROM ubuntu
 
-ARG WEB_ROOT=/var/www/html
-ARG SITE_CONFG_DIR=/etc/apache2/sites-available
+ENV WEB_ROOT=/var/www/html
+ENV SITE_CONFIG_DIR=/etc/apache2/sites-available
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=en_US.UTF-8
@@ -29,7 +29,7 @@ RUN apt-get update -y && \
     apt-get install -y php8.1-imagick php8.1-dom php8.1-intl php8.1-zip php8.1-mysql libapache2-mod-php && \
     apt-get install -y vsftpd acl
 
-RUN rm -rf ${SITE_CONFG_DIR}/* && \
+RUN rm -rf ${SITE_CONFIG_DIR}/* && \
     sed -i "s/^\(memory_limit =\).*/\1 ${PHP_MEMORY_LIMIT}/" ${PHP_INI} && \
     sed -i "s/^\(post_max_size =\).*/\1 ${PHP_POST_MAX_SIZE}/" ${PHP_INI} && \
     sed -i "s/^\(upload_max_filesize =\).*/\1 ${PHP_UPLOAD_MAX_FILESIZE}/" ${PHP_INI} && \
