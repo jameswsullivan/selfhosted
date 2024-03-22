@@ -12,9 +12,6 @@ services:
       - solr-network
     volumes:
       - solr-data:/var/solr/data
-      - ./solr.xml:/opt/solr/server/solr/solr.xml
-      - ./solr-jetty-context.xml:/opt/solr/server/contexts/solr-jetty-context.xml
-      - ./jetty.xml:/opt/solr/server/etc/jetty.xml
     ports:
       - 8983:8983
     entrypoint: 
@@ -36,7 +33,6 @@ services:
     volumes:
       - proxy-nginx-conf-d:/etc/nginx/conf.d
       - proxy-nginx-html:/usr/share/nginx/html
-      - ./default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - solr-service
     working_dir: /etc/nginx/conf.d
