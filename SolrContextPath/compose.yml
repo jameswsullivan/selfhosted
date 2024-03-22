@@ -1,0 +1,58 @@
+name: solr-context-path
+
+services:
+  solr-service:
+    build: 
+      context: .
+      dockerfile: solr.dockerfile
+    image: solr-service:dev
+    container_name: solr-service
+    hostname: solr-service
+    networks:
+      - solr-network
+    volumes:
+      - solr-data:/var/solr/data
+      - ./solr.xml:/opt/solr/server/solr/solr.xml
+      - ./solr-jetty-context.xml:/opt/solr/server/contexts/solr-jetty-context.xml
+      - ./jetty.xml:/opt/solr/server/etc/jetty.xml
+    ports:
+      - 8983:8983
+    entrypoint: 
+      - /bin/bash
+      - '-c'
+      - |
+        solr -f -force
+  solr-proxy:
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    image: solr-proxy:dev
+    container_name: solr-proxy
+    hostname: solr-proxy
+    networks:
+      - solr-network
+    ports:
+      - 80:80
+    volumes:
+      - proxy-nginx-conf-d:/etc/nginx/conf.d
+      - proxy-nginx-html:/usr/share/nginx/html
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - solr-service
+    working_dir: /etc/nginx/conf.d
+    entrypoint: 
+      - /bin/bash
+      - '-c'
+      - |
+        nginx -g "daemon off;"
+
+networks:
+  solr-network:
+
+volumes:
+  solr-data:
+    driver: local
+  proxy-nginx-conf-d:
+    driver: local
+  proxy-nginx-html:
+    driver: local
