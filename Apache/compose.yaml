@@ -1,0 +1,27 @@
+name: apache-server
+
+services:
+  apache-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: apache-server:1.0.0
+    container_name: apache-server
+    hostname: apache-server
+    networks:
+      - apache
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - html:/var/www/html
+      - apache-config:/etc/apache2/sites-available
+
+networks:
+  apache:
+
+volumes:
+  apache-config:
+    driver: local
+  html:
+    driver: local
