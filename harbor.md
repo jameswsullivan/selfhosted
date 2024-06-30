@@ -1,4 +1,4 @@
-### Ubuntu version: `Ubuntu Server LTS 22.04` , Harbor version: `2.11.0`
+#### Ubuntu version: `Ubuntu Server LTS 22.04` , Harbor version: `2.11.0`
 
 #### 1. Install common packages
 
@@ -88,7 +88,7 @@ nano harbor.yml
 
 <hr>
 
-#### If only use HTTP:
+#### Note: if only use HTTP:
 
 If you are only running Harbor in your isolated dev/lab environment like I do, you need to configure Docker to use insecure registries, and this has to be done on any/all clients that will connect/login to your Harbor instance. And when building/tagging your image, you will also need to explicitly specify port 80 to avoid issues.
 
