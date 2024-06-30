@@ -1,4 +1,6 @@
-#### 1. Install common packages (Ubuntu Server LTS 22.04)
+### Ubuntu version: `Ubuntu Server LTS 22.04` , Harbor version: `2.11.0`
+
+#### 1. Install common packages
 
 ```
 apt-get update -y
@@ -84,6 +86,7 @@ nano harbor.yml
 /opt/habor/install.sh
 ```
 
+<hr>
 
 #### If only use HTTP:
 
