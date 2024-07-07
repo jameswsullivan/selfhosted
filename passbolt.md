@@ -5,7 +5,7 @@
 [Official Passbolt Image](https://hub.docker.com/r/passbolt/passbolt)
 
 ```
-pull passbolt/passbolt
+docker pull passbolt/passbolt
 ```
 
 <br>
@@ -13,7 +13,7 @@ pull passbolt/passbolt
 **Start Container**
 
 ```
-docker run -dit \
+docker run -d \
     --name=YOUR_CONTAINER_NAME \
     --ip IP_ADDRESS --network YOUR_DOCKER_NETWORK \
     --hostname=YOUR_PASSBOLT_HOSTNAME \
