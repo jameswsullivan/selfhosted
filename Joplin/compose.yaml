@@ -1,0 +1,45 @@
+name: joplin
+
+services:
+
+  joplin-db:
+    image: postgres:16
+    container_name: joplin-db
+    hostname: joplin-db
+    restart: unless-stopped
+    networks:
+      joplin:
+    environment:
+      POSTGRES_USER: "joplin"
+      POSTGRES_PASSWORD: "joplin"
+      POSTGRES_DB: "joplin"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  joplin-app:
+    image: joplin/server:latest
+    container_name: joplin-app
+    hostname: joplin-app
+    restart: unless-stopped
+    networks:
+      joplin:
+    ports:
+      - 80:80
+    environment:
+      APP_PORT: 80
+      APP_BASE_URL: "http://localhost"
+      DB_CLIENT: "pg"
+      POSTGRES_PASSWORD: "joplin"
+      POSTGRES_DATABASE: "joplin"
+      POSTGRES_USER: "joplin"
+      POSTGRES_PORT: 5432
+      POSTGRES_HOST: "joplin-db"
+    depends_on:
+      - joplin-db
+
+networks:
+  joplin:
+
+volumes:
+  pgdata:
+    driver: local
