@@ -13,8 +13,8 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD: 1234
-      - TZ: "America/Chicago"
+      MYSQL_ROOT_PASSWORD: 1234
+      TZ: "America/Chicago"
   web:
     build:
       context: .
@@ -34,7 +34,7 @@ services:
     depends_on:
       - database
     environment:
-      - FTP_USER_PASS: 1234
+      FTP_USER_PASS: 1234
 
 networks:
   lamp:
