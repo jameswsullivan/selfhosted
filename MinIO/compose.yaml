@@ -17,3 +17,13 @@ services:
       - 9000:9000
       - 9001:9001
     command: server /data --console-address ":9001" --address ":9000"
+
+  minio-mc:
+    image: minio/mc
+    pull_policy: always
+    container_name: minio-mc
+    hostname: minio-mc
+    restart: unless-stopped
+    depends_on:
+      - minio
+    entrypoint: /bin/sh -c "tail -f /dev/null"
