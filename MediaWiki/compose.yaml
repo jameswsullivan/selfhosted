@@ -15,6 +15,8 @@ services:
       - ./data/mediawiki.conf:/etc/apache2/conf.d/mediawiki.conf
     depends_on:
       - mediawiki-mysql
+    ports:
+      - 8080:80
 
   mediawiki-mysql:
     build:
@@ -25,12 +27,8 @@ services:
     hostname: mediawiki-mysql
     networks:
       - mediawiki
-    ports:
-      - 80:80
     volumes:
-      - ./data/mysql:/var/lib/mysql
-    depends_on:
-      - database
+      - mysql:/var/lib/mysql
     environment:
       LC_ALL: "en_US.UTF-8"
       LANG: "en_US.UTF-8"
@@ -39,4 +37,8 @@ services:
 
 networks:
   mediawiki:
+
+volumes:
+  mysql:
+    driver: local
 

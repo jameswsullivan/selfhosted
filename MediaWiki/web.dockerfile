@@ -30,10 +30,7 @@ RUN rm -rf /var/www/localhost/htdocs/* && \
     sed -i "s/^\(upload_max_filesize =\).*/\1 ${PHP_UPLOAD_MAX_FILESIZE}/" ${PHP_INI} && \
     echo ${PHP_LOG_FILE} >> ${PHP_INI}
 
-COPY ./mediawiki-entrypoint.sh /usr/local/bin/mediawiki-entrypoint.sh
-RUN chmod ugo+rx /usr/local/bin/mediawiki-entrypoint.sh
-
 EXPOSE 80
 
-ENTRYPOINT ["mediawiki-entrypoint.sh"]
+CMD ["httpd", "-D", "FOREGROUND"]
 
