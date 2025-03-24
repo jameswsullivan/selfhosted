@@ -1,0 +1,42 @@
+name: mediawiki
+
+services:
+  mediawiki-web:
+    build:
+      context: .
+      dockerfile: web.dockerfile
+    image: mediawiki:alpine-apache-php84
+    container_name: mediawiki-web
+    hostname: mediawiki-web
+    networks:
+      - mediawiki
+    volumes:
+      - ./data/mediawiki:/var/www/localhost/htdocs
+      - ./data/mediawiki.conf:/etc/apache2/conf.d/mediawiki.conf
+    depends_on:
+      - mediawiki-mysql
+
+  mediawiki-mysql:
+    build:
+      context: .
+      dockerfile: mysql.dockerfile
+    image: mediawiki:ubuntu-mysql-latest
+    container_name: mediawiki-mysql
+    hostname: mediawiki-mysql
+    networks:
+      - mediawiki
+    ports:
+      - 80:80
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    depends_on:
+      - database
+    environment:
+      LC_ALL: "en_US.UTF-8"
+      LANG: "en_US.UTF-8"
+      TZ: "America/Chicago"
+      MYSQL_ROOT_PASSWORD: "mediawiki"
+
+networks:
+  mediawiki:
+
