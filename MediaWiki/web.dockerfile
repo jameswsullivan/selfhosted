@@ -17,11 +17,12 @@ ENV PHP_LOG_FILE="error_log = php_errors.log"
 
 RUN apk update && apk upgrade && \
     apk add --no-cache musl-locales musl-locales-lang tzdata ca-certificates && \
-    apk add --no-cache openrc curl wget nano unzip && \
+    apk add --no-cache openrc curl wget nano unzip git && \
     update-ca-certificates && \
-    apk add --no-cache mysql-client apache2 apache2-utils && \
-    apk add --no-cache php84 php84-common php84-mbstring php84-xml php84-mysqli php84-fileinfo && \
-    apk add --no-cache php84-calendar php84-session php84-dom php84-iconv php84-intl && \
+    apk add --no-cache mysql-client apache2 apache2-utils diffutils && \
+    apk add --no-cache php84 php84-apache2 php84-common php84-mbstring php84-xml php84-mysqli && \
+    apk add --no-cache php84-fileinfo php84-ctype php84-calendar php84-session php84-dom && \
+    apk add --no-cache php84-iconv php84-intl php84-gd php84-pecl-apcu && \
     ln -s /usr/bin/php84 /usr/bin/php
 
 RUN rm -rf /var/www/localhost/htdocs/* && \
