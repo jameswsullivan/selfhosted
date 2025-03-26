@@ -22,7 +22,7 @@ RUN apk update && apk upgrade && \
     apk add --no-cache mysql-client apache2 apache2-utils diffutils sqlite && \
     apk add --no-cache php84 php84-apache2 php84-common php84-mbstring php84-xml && \
     apk add --no-cache php84-fileinfo php84-ctype php84-calendar php84-session php84-dom && \
-    apk add --no-cache php84-iconv php84-intl php84-gd php84-pecl-apcu && \
+    apk add --no-cache php84-iconv php84-intl php84-gd php84-pecl-apcu php84-openssl && \
     apk add --no-cache php84-pdo php84-sqlite3 php84-pdo_sqlite && \
     ln -s /usr/bin/php84 /usr/bin/php
 
