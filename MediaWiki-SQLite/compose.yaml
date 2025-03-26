@@ -10,6 +10,7 @@ services:
     hostname: mediawiki
     volumes:
       - ./data/mediawiki:/var/www/localhost/htdocs
+      - ./data/data:/var/www/localhost/data
       - ./data/phpinfo.php:/var/www/localhost/htdocs/phpinfo.php
       - ./data/mediawiki.conf:/etc/apache2/conf.d/mediawiki.conf
     ports:
