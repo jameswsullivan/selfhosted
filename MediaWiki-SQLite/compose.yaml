@@ -1,0 +1,17 @@
+name: mediawiki
+
+services:
+  mediawiki:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mediawiki:alpine-apache-php84-sqlite
+    container_name: mediawiki
+    hostname: mediawiki
+    volumes:
+      - ./data/mediawiki:/var/www/localhost/htdocs
+      - ./data/phpinfo.php:/var/www/localhost/htdocs/phpinfo.php
+      - ./data/mediawiki.conf:/etc/apache2/conf.d/mediawiki.conf
+    ports:
+      - 8080:80
+

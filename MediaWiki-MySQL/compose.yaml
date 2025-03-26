@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: web.dockerfile
-    image: mediawiki:alpine-apache-php84
+    image: mediawiki:alpine-apache-php84-mysql
     container_name: mediawiki-web
     hostname: mediawiki-web
     networks:
